@@ -1,0 +1,14 @@
+;Alt + Left Click
+;Roguelands Craft
+;
+!Lbutton::
+	Loop 13
+	{
+		MouseClick, Left
+		Sleep 5
+		if (GetKeyState("space", "P"))
+		{
+			break
+		}
+	}
+Return
