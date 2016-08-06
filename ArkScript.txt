@@ -1,0 +1,77 @@
+;
+;Alt + W
+;Autorun, Auto run.
+;
+!w::
+	Send {w up}
+	Send {w down}
+Return
+
+;
+;Alt + Shift + W
+;Autosprint, Auto sprint.
+;
++!w::
+	Send {w up}
+	Send {w down}
+	Sleep 300
+	Send {LShift up}
+	Send {LShift down}
+Return
+
+;
+;Ctrl + E
+;Auto gather, E to cancel
+;
+^e::
+	Sleep 300
+	while (not GetKeyState("e","P"))
+	{
+		Send {e}
+		Sleep 100
+		;Sleep 50
+	}
+Return
+
+
+;
+;Alt + Left Click
+;spam auto left click, used for Use Item x50
+;
+!Lbutton::
+	Loop 15
+	{
+		MouseClick, Left
+		Sleep 5
+		if (GetKeyState("space", "P"))
+		{
+			break
+		}
+	}
+Return
+
+;
+;Ctrl + Alt + Left Click
+;Split item into 100 stacks. Space to stop.
+;
+^!Lbutton::
+	Sleep 400	
+	Send {Ctrl down}
+	Loop 100
+	{
+		MouseClick, Left, 0, 0, 1, 2, D, R
+		;Sleep 30
+		Sleep 80
+		MouseClick, Left, 0, 70, 1, 2, U, R
+		;Sleep 20
+		Sleep 60
+		MouseMove, 0, -70, 2, R
+		Sleep 60
+		
+		if (GetKeyState("space", "P"))
+		{
+			break
+		}
+	}
+	Send {Ctrl up}
+Return
